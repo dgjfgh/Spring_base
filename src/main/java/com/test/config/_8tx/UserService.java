@@ -19,7 +19,7 @@ public class UserService {
     public void insert() {
         userDao.insert();
         System.out.println("UserService----插入完成");
-        int a=2/0;
+//        int a=2/0;
     }
 
 }

@@ -1,7 +1,8 @@
 package com.test;
 
-import com.demo.AopConfig;
-import com.demo.MathCalculation;
+import com.test.config._11aop.AopConfig;
+import com.test.config._11aop.MathCalculation;
+
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

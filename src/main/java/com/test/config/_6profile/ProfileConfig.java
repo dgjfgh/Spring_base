@@ -1,6 +1,6 @@
 package com.test.config._6profile;
 
-import com.mchange.v2.c3p0.ComboPooledDataSource;
+import com.alibaba.druid.pool.DruidDataSource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.EmbeddedValueResolverAware;
 import org.springframework.context.annotation.Bean;
@@ -26,28 +26,28 @@ public class ProfileConfig implements EmbeddedValueResolverAware{
     @Profile("test")
     @Bean
     public DataSource dataSourceTest(@Value("${jdbc.password}")String pwd) throws Exception {
-        ComboPooledDataSource dataSource = new ComboPooledDataSource();
-        dataSource.setDataSourceName(name);
+        DruidDataSource dataSource = new DruidDataSource();
+        dataSource.setUsername(name);
         dataSource.setPassword(pwd);
 
         String url = stringValueResolver.resolveStringValue("${jdbc.url}");
         String driver = stringValueResolver.resolveStringValue("${jdbc.driver}");
-        dataSource.setJdbcUrl(url);
-        dataSource.setDriverClass(driver);
+        dataSource.setUrl(url);
+        dataSource.setDriverClassName(driver);
         return dataSource;
     }
 
     @Profile("dev")
     @Bean
     public DataSource dataSourceDev(@Value("${jdbc.password}")String pwd) throws Exception {
-        ComboPooledDataSource dataSource = new ComboPooledDataSource();
-        dataSource.setDataSourceName("root1");
+        DruidDataSource dataSource = new DruidDataSource();
+        dataSource.setUsername("root1");
         dataSource.setPassword(pwd);
 
         String url = stringValueResolver.resolveStringValue("${jdbc.url}");
         String driver = stringValueResolver.resolveStringValue("${jdbc.driver}");
-        dataSource.setJdbcUrl(url);
-        dataSource.setDriverClass(driver);
+        dataSource.setUrl(url);
+        dataSource.setDriverClassName(driver);
         return dataSource;
     }
 

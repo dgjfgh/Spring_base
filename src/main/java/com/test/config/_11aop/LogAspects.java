@@ -1,7 +1,12 @@
-package com.demo;
+package com.test.config._11aop;
 
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.*;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 
 /**
  * Created by majianghua on 2018/10/10.
@@ -9,10 +14,10 @@ import org.aspectj.lang.annotation.*;
 @Aspect
 public class LogAspects {
 
-    @Pointcut("execution(public int com.demo.MathCalculation.*(..))")
+    @Pointcut("execution(public int com.test.config._11aop.MathCalculation.*(..))")
     public void pointCut(){}
 
-    @Before("com.demo.LogAspects.pointCut()")
+    @Before("com.test.config._11aop.LogAspects.pointCut()")
     public void logStart(JoinPoint joinPoint) {
         Object[] args = joinPoint.getArgs();//方法参数
         System.out.println(joinPoint.getSignature().getName()+"除法运行");
